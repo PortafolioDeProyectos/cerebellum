@@ -21,6 +21,7 @@ const Nav = () => {
       <Navegacion>
         <Link href="/">Inicio</Link>
         <Link href="/nosotros">Nosotros</Link>
+        <Link href="/ayuda">Ayuda (TypeScript)</Link>
       </Navegacion>
     </div>
   );
