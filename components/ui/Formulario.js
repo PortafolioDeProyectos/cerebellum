@@ -34,3 +34,29 @@ export const InputSubmit = styled.input`
     cursor: pointer;
   }
 `;
+
+export const InputSubmitInc = styled.input`
+  background-color: var(--azul);
+  width: 100%;
+  padding: 1.5rem;
+  text-align: center;
+  color: #fff;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  border: none;
+  margin-bottom: 2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const Error = styled.p`
+  background-color: red;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 1.4rem;
+`;

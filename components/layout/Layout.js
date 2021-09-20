@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import { Global, css } from "@emotion/react";
 import Head from "next/head";
+
 const Layout = (props) => {
   return (
     <>
@@ -44,7 +45,6 @@ const Layout = (props) => {
         `}
       />
       <Head>
-        <html lang="es" />
         <title>Cerebellum</title>
         <link
           rel="stylesheet"

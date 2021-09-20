@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 
 import Nav from "../layout/Nav";
 import Boton from "../ui/Boton";
-const ContenedorHeader = styled.dev`
+const ContenedorHeader = styled.div`
   max-width: 1200px;
   width: 95%;
   margin: 0 auto;
