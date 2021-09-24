@@ -11,9 +11,9 @@ import {
 import validarCrearProducto from "../validacion/validarCrearProducto";
 
 //Validacion
-
 import useValidacion from "../hooks/useValidacion";
 
+import { FirebaseContext } from "../firebase";
 const STATE_INICIAL = {
   nombre: "",
   empresa: "",
@@ -31,8 +31,20 @@ const NuevoProducto = () => {
   const router = useRouter();
 
   //context con las operaciones crud de firebase
+  const { usuario, firebase } = useContext(FirebaseContext);
 
-  function crearProducto() {}
+  function crearProducto() {
+    const producto = {
+      nombre,
+      empresa,
+      url,
+      descripcion,
+      votos: 0,
+      comentarios: [],
+      creado: Date.now(),
+    };
+    console.log(usuario, firebase);
+  }
 
   return (
     <div>

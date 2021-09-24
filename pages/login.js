@@ -15,7 +15,7 @@ import firebase from "../firebase";
 //Validacion
 
 import useValidacion from "../hooks/useValidacion";
-import { async } from "@firebase/util";
+
 const STATE_INICIAL = {
   email: "",
   password: "",

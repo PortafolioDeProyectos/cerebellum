@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import firebaseConfig from "./config";
+import { getFirestore } from "firebase/firestore";
 
 class Firebase {
   constructor() {
@@ -13,6 +14,7 @@ class Firebase {
       app.initializeApp(firebaseConfig);
     }
     this.auth = getAuth();
+    this.db = getFirestore();
   }
 
   //Registra un usuario
