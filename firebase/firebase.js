@@ -1,20 +1,15 @@
-import * as app from "firebase/app";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import app from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 import firebaseConfig from "./config";
-import { getFirestore } from "firebase/firestore";
 
 class Firebase {
   constructor() {
-    if (!app.getApps.length) {
+    if (!app.apps.length) {
       app.initializeApp(firebaseConfig);
     }
-    this.auth = getAuth();
-    this.db = getFirestore();
+    this.auth = app.auth();
+    this.db = app.firestore();
   }
 
   //Registra un usuario

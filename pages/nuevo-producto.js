@@ -14,6 +14,8 @@ import validarCrearProducto from "../validacion/validarCrearProducto";
 import useValidacion from "../hooks/useValidacion";
 
 import { FirebaseContext } from "../firebase";
+import { async } from "@firebase/util";
+
 const STATE_INICIAL = {
   nombre: "",
   empresa: "",
@@ -33,7 +35,12 @@ const NuevoProducto = () => {
   //context con las operaciones crud de firebase
   const { usuario, firebase } = useContext(FirebaseContext);
 
-  function crearProducto() {
+  async function crearProducto() {
+    //Si el usuario no esta logeado lo llevamos al login
+    if (!usuario) {
+      router.push("/login");
+    }
+    //creamos el objeto producto
     const producto = {
       nombre,
       empresa,
@@ -43,7 +50,8 @@ const NuevoProducto = () => {
       comentarios: [],
       creado: Date.now(),
     };
-    console.log(usuario, firebase);
+    //lo insertamos en la base de datos
+    await firebase.db.collection("productos").add(producto);
   }
 
   return (
