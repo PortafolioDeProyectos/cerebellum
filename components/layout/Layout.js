@@ -2,6 +2,11 @@ import React from "react";
 import Header from "./Header";
 import { Global, css } from "@emotion/react";
 import Head from "next/head";
+import styled from "@emotion/styled";
+
+const Main = styled.main`
+  background-color: #edf4fb;
+`;
 
 const Layout = (props) => {
   return (
@@ -53,16 +58,17 @@ const Layout = (props) => {
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
         />
-        <link href="/static/css/app.css" rel="stylesheet" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <link href="../../public/static/css/app.css" />
       </Head>
       <Header />
-      <main>{props.children}</main>
+      <Main>{props.children}</Main>
     </>
   );
 };

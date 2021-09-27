@@ -11,6 +11,20 @@ const Parrafo = styled.p`
   width: 95%;
   margin: 2rem auto 0 auto;
 `;
+const ListadoProductos = styled.div`
+  max-width: 1200px;
+  width: 95%;
+  padding: 5rem 0;
+  margin: 0 auto;
+`;
+const Contenedor = styled.div`
+  background-color: white;
+`;
+
+const ListadoProd = styled.ul`
+  background-color: #fff;
+`;
+
 const Inicio = () => {
   const [productos, setProductos] = useState([]);
   const { firebase } = useContext(FirebaseContext);
@@ -37,15 +51,15 @@ const Inicio = () => {
   return (
     <div>
       <Layout>
-        <div className="listado-productos">
-          <div className="contenedor">
-            <ul className="bg-whiteS">
+        <ListadoProductos>
+          <Contenedor>
+            <ListadoProd>
               {productos.map((producto) => (
                 <DetallesProducto key={producto.id} producto={producto} />
               ))}
-            </ul>
-          </div>
-        </div>
+            </ListadoProd>
+          </Contenedor>
+        </ListadoProductos>
 
         <h1
           css={css`
