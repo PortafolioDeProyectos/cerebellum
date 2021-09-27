@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Layout from "../components/layout/Layout";
 import { FirebaseContext } from "../firebase";
-
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import DetallesProducto from "../components/layout/DetallesProducto";
@@ -51,6 +50,15 @@ const Inicio = () => {
   return (
     <div>
       <Layout>
+        <h1
+          css={css`
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 0;
+          `}
+        >
+          Ultimos productos
+        </h1>
         <ListadoProductos>
           <Contenedor>
             <ListadoProd>

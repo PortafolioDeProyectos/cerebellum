@@ -4,13 +4,13 @@ import { Global, css } from "@emotion/react";
 import Head from "next/head";
 import styled from "@emotion/styled";
 
-const Main = styled.main`
-  background-color: #edf4fb;
+const Fondo = styled.main`
+  background-color: #f0f5fb;
 `;
 
 const Layout = (props) => {
   return (
-    <>
+    <Fondo>
       <Global
         styles={css`
           :root {
@@ -29,20 +29,24 @@ const Layout = (props) => {
           body {
             font-size: 1.6rem;
             line-height: 1.5;
-            font-family: "Monda";
+            font-family: "PT Sans", sans-serif;
+            background-color: #f0f5fb;
           }
           h1,
-          h2,
+          h2 {
+            font-family: "Roboto Slab", serif;
+            font-weight: 700;
+          }
           h3 {
             margin: 0 0 2rem 0;
             line-height: 1.5;
-            font-family: "Monda";
+            font-family: "PT Sans", sans-serif;
           }
           ul {
             list-style: none;
             margin: 0;
             padding: 0;
-            font-family: "Monda";
+            font-family: "PT Sans", sans-serif;
           }
           a {
             text-decoration: none;
@@ -65,11 +69,15 @@ const Layout = (props) => {
           href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css?family=PT+Sans:400,700|Roboto+Slab:400,700&display=swap"
+          rel="stylesheet"
+        />
         <link href="../../public/static/css/app.css" />
       </Head>
       <Header />
-      <Main>{props.children}</Main>
-    </>
+      <main>{props.children}</main>
+    </Fondo>
   );
 };
 

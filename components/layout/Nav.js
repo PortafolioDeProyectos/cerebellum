@@ -13,7 +13,7 @@ const Navegacion = styled.nav`
       margin-right: 0;
     }
 
-    font-family: "Monda";
+    font-family: "PT Sans", sans-serif;
   }
 `;
 const Nav = () => {
@@ -26,8 +26,8 @@ const Nav = () => {
         {usuario && (
           <>
             <Link href="/nuevo-producto">Nuevo Producto</Link>
-            <Link href="/nosotros">Nosotros</Link>
-            <Link href="/ayuda">Ayuda (TypeScript)</Link>
+            {/*<Link href="/nosotros">Nosotros</Link>
+            <Link href="/ayuda">Ayuda (TypeScript)</Link>*/}
           </>
         )}
       </Navegacion>

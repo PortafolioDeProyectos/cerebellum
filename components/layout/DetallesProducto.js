@@ -4,7 +4,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { es } from "date-fns/locale";
 
 const Producto = styled.li`
-  padding: 4rem;
+  padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,6 +74,7 @@ const Votos = styled.div`
 
 const Imagen = styled.img`
   width: 200px;
+  height: 200px;
 `;
 const DetallesProducto = ({ producto }) => {
   const {

@@ -3,10 +3,11 @@ import styled from "@emotion/styled";
 export const Formulario = styled.form`
   max-width: 600px;
   width: 95%;
-  margin: 5rem auto 0 auto;
+  margin: 2rem auto 2rem auto;
+
   fieldset {
     margin: 2rem 0;
-    border: 1px solid #e1e1e1;
+    border: 2px solid #e1e1e1;
     font-size: 2rem;
     padding: 2rem;
   }
@@ -31,7 +32,7 @@ export const Campo = styled.div`
 `;
 
 export const InputSubmit = styled.input`
-  background-color: var(--azul);
+  background-color: #7cb6f5;
   width: 100%;
   padding: 1.5rem;
   text-align: center;
@@ -39,6 +40,8 @@ export const InputSubmit = styled.input`
   font-size: 1.8rem;
   text-transform: uppercase;
   border: none;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
 
   &:hover {
     cursor: pointer;

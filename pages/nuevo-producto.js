@@ -15,7 +15,6 @@ import validarCrearProducto from "../validacion/validarCrearProducto";
 import useValidacion from "../hooks/useValidacion";
 
 import { FirebaseContext } from "../firebase";
-import { async } from "@firebase/util";
 
 const STATE_INICIAL = {
   nombre: "",
@@ -95,7 +94,7 @@ const NuevoProducto = () => {
           <h1
             css={css`
               text-align: center;
-              margin-top: 5rem;
+              margin-top: 2rem;
             `}
           >
             Nuevo producto
