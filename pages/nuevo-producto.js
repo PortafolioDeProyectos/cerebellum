@@ -62,6 +62,7 @@ const NuevoProducto = () => {
         id: usuario.uid,
         nombre: usuario.displayName,
       },
+      haVotado: [],
     };
     //lo insertamos en la base de datos
     await firebase.db.collection("productos").add(producto);
