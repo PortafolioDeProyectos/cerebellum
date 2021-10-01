@@ -123,7 +123,7 @@ const Producto = () => {
   const agregarComentario = (e) => {
     e.preventDefault();
     if (!usuario) {
-      Router.push("/login");
+      router.push("/login");
     }
     //Informaicon extra al comentario
     comentario.usuarioId = usuario.uid;
@@ -141,6 +141,30 @@ const Producto = () => {
     //Actualizar el state
     setProducto({ ...producto, comentarios: nuevosComentarios });
     //setConsultarBD(true); //; hay un comentario , por lo tanto consultar a la base de datos
+  };
+  //funcion que revisa que el creador sel producto sea el mismo que esta autenticado
+  const puedeBorrar = () => {
+    if (!usuario) return false;
+    if (creador.id === usuario.uid) {
+      return true;
+    }
+  };
+
+  // elimina un producto de la base de datos
+
+  const eliminarProducto = async () => {
+    if (!usuario) {
+      Router.push("/login");
+    }
+    if (creador.id !== usuario.uid) {
+      return router.push("/");
+    }
+    try {
+      await firebase.db.collection("productos").doc(id).delete();
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -244,6 +268,9 @@ const Producto = () => {
                 </div>
               </aside>
             </ContenedorProducto>
+            {puedeBorrar() && (
+              <Boton onClick={eliminarProducto}>Eliminar producto</Boton>
+            )}
           </Contnenedor>
         )}
       </>

@@ -2,33 +2,17 @@ import React, { useState } from "react";
 import Router from "next/router";
 import Layout from "../components/layout/Layout";
 import { css } from "@emotion/react";
-import {
-  Formulario,
-  Campo,
-  InputSubmit,
-  Error,
-} from "../components/ui/Formulario";
+import { Formulario } from "../components/ui/Formulario";
 import validarIniciarSesion from "../validacion/validarIniciarSesion";
-
 import firebase from "../firebase";
-
 //Validacion
-
 import useValidacion from "../hooks/useValidacion";
+import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,Button,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  CloseButton
-  
-} from "@chakra-ui/react"
-
+  InputSubmit,
+  CampoFormulario,
+  ErrorFormulario,
+} from "../components/ui/FormularioChakra";
 
 const STATE_INICIAL = {
   email: "",
@@ -53,7 +37,6 @@ const Login = () => {
     <div>
       <Layout>
         <>
-    
           <h1
             css={css`
               text-align: center;
@@ -63,46 +46,43 @@ const Login = () => {
             Iniciar sesion
           </h1>
           <Formulario onSubmit={handleSubmit} noValidate>
-                     
-       <FormControl id="email">
-            <FormLabel htmlFor="email" >Email address</FormLabel>
-            <Input size="lg" mb="2" type="email"
+            <FormControl id="email">
+              <FormLabel htmlFor="email">Email address</FormLabel>
+              <Input
+                size="lg"
+                mb="2"
+                type="email"
                 id="email"
                 placeholder="Tu email"
                 name="email"
                 value={email}
                 onChange={handleChange}
-                onBlur={handleBlur} />
+                onBlur={handleBlur}
+              />
             </FormControl>
 
-            {errores.email && ( <Alert status="error">
-              <AlertIcon />
-              <AlertTitle mr={2}>{errores.email}</AlertTitle>             
-            </Alert> )}
-         
-          <FormControl >
-            <FormLabel htmlFor="password">Password</FormLabel>
-            <Input size="lg" mb="2" type="password"
+            {errores.email && <ErrorFormulario error={errores.email} />}
+
+            <FormControl>
+              <FormLabel htmlFor="password">Password</FormLabel>
+              <Input
+                size="lg"
+                mb="2"
+                type="password"
                 id="password"
                 placeholder="Tu password"
                 name="password"
                 value={password}
                 onChange={handleChange}
-                onBlur={handleBlur}></Input>
-          </FormControl>
+                onBlur={handleBlur}
+              ></Input>
+            </FormControl>
 
-            {errores.password &&  ( <Alert status="error">
-              <AlertIcon />
-              <AlertTitle mr={2}>{errores.password}</AlertTitle>             
-            </Alert>)}
+            {errores.password && <ErrorFormulario error={errores.password} />}
 
-            {error && (<Alert status="error" mt="10">
-              <AlertIcon />
-              <AlertTitle mr={2}>{error}</AlertTitle>             
-            </Alert>)}
-            <Button colorScheme="blue" type="submit" width="100%" size="lg" mt="5" >Iniciar Sesion</Button>
+            {error && <ErrorFormulario error={error} />}
 
-            
+            <InputSubmit titulo="Iniciar sesion" />
           </Formulario>
         </>
       </Layout>
