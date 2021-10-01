@@ -7,11 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export":"next export"
-
+    "export": "next export"
   },
   "dependencies": {
     "@babel/core": "^7.15.5",
+    "@chakra-ui/react": "^1.6.8",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/core": "^11.0.0",
@@ -23,6 +23,7 @@
     "date-fns": "^2.24.0",
     "firebase": "^9.0.2",
     "firebase-admin": "^9.11.1",
+    "framer-motion": "^4.1.17",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
