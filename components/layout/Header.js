@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import Nav from "../layout/Nav";
 import Boton from "../ui/Boton";
+import Buscar from "../ui/Buscar";
 import { FirebaseContext } from "../../firebase";
 const ContenedorHeader = styled.div`
   max-width: 1200px;
@@ -46,6 +47,7 @@ const Header = () => {
           <Link href="/">
             <Logo>Cerebellum</Logo>
           </Link>
+          <Buscar />
           <Nav />
         </div>
         <div

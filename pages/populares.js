@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
-
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import DetallesProducto from "../components/layout/DetallesProducto";
@@ -25,9 +24,8 @@ const ListadoProd = styled.ul`
   background-color: #fff;
 `;
 
-const Inicio = () => {
-  const { productos } = useProductos("creado");
-
+const Populares = () => {
+  const { productos } = useProductos("votos");
   return (
     <div>
       <Layout>
@@ -38,7 +36,7 @@ const Inicio = () => {
             margin-bottom: 0;
           `}
         >
-          Ultimos productos
+          Productos con más votos
         </h1>
         <ListadoProductos>
           <Contenedor>
@@ -49,25 +47,9 @@ const Inicio = () => {
             </ListadoProd>
           </Contenedor>
         </ListadoProductos>
-
-        <h1
-          css={css`
-            text-align: center;
-            margin-top: 5rem;
-          `}
-        >
-          Sobre el proyecto
-        </h1>
-        <Parrafo>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Este
-          proyecto esta desarrollado en NextJS, esta conectado a una base de
-          datos de Firebase. Se Utilizaron Hooks para realizar las validaciones
-          Para la parte de diseño se usa styled-component , importacion de hojas
-          de estilo, y css mas localizado usando las herramientas de @emotion.
-        </Parrafo>
       </Layout>
     </div>
   );
 };
 
-export default Inicio;
+export default Populares;

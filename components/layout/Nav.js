@@ -26,8 +26,7 @@ const Nav = () => {
         {usuario && (
           <>
             <Link href="/nuevo-producto">Nuevo Producto</Link>
-            {/*<Link href="/nosotros">Nosotros</Link>
-            <Link href="/ayuda">Ayuda (TypeScript)</Link>*/}
+            <Link href="/populares">Populares</Link>
           </>
         )}
       </Navegacion>

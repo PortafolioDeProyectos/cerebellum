@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/layout/Layout";
-
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { useRouter } from "next/router";
 import DetallesProducto from "../components/layout/DetallesProducto";
 import useProductos from "../hooks/useProductos";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const Parrafo = styled.p`
   max-width: 1200px;
@@ -25,11 +25,28 @@ const ListadoProd = styled.ul`
   background-color: #fff;
 `;
 
-const Inicio = () => {
-  const { productos } = useProductos("creado");
+const Buscar = () => {
+  const router = useRouter();
+  const {
+    query: { q },
+  } = router;
 
+  //Todos los productos
+  const { productos } = useProductos("creado");
+  const [resultado, setResultado] = useState([]);
+  console.log(q, productos);
+  useEffect(() => {
+    const busqueda = q.toLowerCase();
+    const filtro = productos.filter((producto) => {
+      return (
+        producto.nombre.toLowerCase().includes(busqueda) ||
+        producto.descripcion.toLowerCase().includes(busqueda)
+      );
+    });
+    setResultado(filtro);
+  }, [q, productos]);
   return (
-    <div>
+    <>
       <Layout>
         <h1
           css={css`
@@ -43,31 +60,15 @@ const Inicio = () => {
         <ListadoProductos>
           <Contenedor>
             <ListadoProd>
-              {productos.map((producto) => (
+              {resultado.map((producto) => (
                 <DetallesProducto key={producto.id} producto={producto} />
               ))}
             </ListadoProd>
           </Contenedor>
         </ListadoProductos>
-
-        <h1
-          css={css`
-            text-align: center;
-            margin-top: 5rem;
-          `}
-        >
-          Sobre el proyecto
-        </h1>
-        <Parrafo>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Este
-          proyecto esta desarrollado en NextJS, esta conectado a una base de
-          datos de Firebase. Se Utilizaron Hooks para realizar las validaciones
-          Para la parte de diseño se usa styled-component , importacion de hojas
-          de estilo, y css mas localizado usando las herramientas de @emotion.
-        </Parrafo>
       </Layout>
-    </div>
+    </>
   );
 };
 
-export default Inicio;
+export default Buscar;
