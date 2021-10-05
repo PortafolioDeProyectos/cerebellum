@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { Button } from "@chakra-ui/button";
-
 const Boton = styled.a`
   display: block;
   font-family: "Monda";

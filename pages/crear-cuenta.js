@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import Router from "next/router";
 import Layout from "../components/layout/Layout";
 import { css } from "@emotion/react";
-import {
-  Formulario,
-  Campo,
-  InputSubmit,
-  Error,
-} from "../components/ui/Formulario";
+import { Formulario, Campo, Error } from "../components/ui/Formulario";
 import validarCrearCuenta from "../validacion/validarCrearCuenta";
-
 import firebase from "../firebase";
 
+// componente sde chakra
+import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import {
+  InputSubmit,
+  ErrorFormulario,
+} from "../components/ui/FormularioChakra";
 //Validacion
 
 import useValidacion from "../hooks/useValidacion";
@@ -49,9 +49,9 @@ const Crear = () => {
             Crear cuenta
           </h1>
           <Formulario onSubmit={handleSubmit} noValidate>
-            <Campo>
-              <label htmlFor="nombre">Nombre</label>
-              <input
+            <FormControl id="nombre">
+              <FormLabel htmlFor="nombre">Nombre</FormLabel>
+              <Input
                 type="text"
                 id="nombre"
                 placeholder="Tu nombre"
@@ -59,12 +59,12 @@ const Crear = () => {
                 value={nombre}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              ></input>
-            </Campo>
-            {errores.nombre && <Error>{errores.nombre}</Error>}
-            <Campo>
-              <label htmlFor="email">Email</label>
-              <input
+              />
+            </FormControl>
+            {errores.nombre && <ErrorFormulario error={errores.nombre} />}
+            <FormControl>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <Input
                 type="email"
                 id="email"
                 placeholder="Tu email"
@@ -72,12 +72,12 @@ const Crear = () => {
                 value={email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              ></input>
-            </Campo>
-            {errores.email && <Error>{errores.email}</Error>}
-            <Campo>
-              <label htmlFor="password">Password</label>
-              <input
+              />
+            </FormControl>
+            {errores.email && <ErrorFormulario error={errores.email} />}
+            <FormControl>
+              <FormLabel htmlFor="password">Password</FormLabel>
+              <Input
                 type="password"
                 id="password"
                 placeholder="Tu password"
@@ -85,11 +85,11 @@ const Crear = () => {
                 value={password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              ></input>
-            </Campo>
-            {errores.password && <Error>{errores.password}</Error>}
-            {error && <Error>{error}</Error>}
-            <InputSubmit type="submit" value="Crear cuenta" />
+              />
+            </FormControl>
+            {errores.password && <ErrorFormulario error={errores.password} />}
+            {error && <ErrorFormulario error={error} />}
+            <InputSubmit titulo="Crear cuenta" />
           </Formulario>
         </>
       </Layout>

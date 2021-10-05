@@ -10,7 +10,6 @@ import useValidacion from "../hooks/useValidacion";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import {
   InputSubmit,
-  CampoFormulario,
   ErrorFormulario,
 } from "../components/ui/FormularioChakra";
 

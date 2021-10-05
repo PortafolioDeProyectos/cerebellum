@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Input, Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
+import { Button, Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 export const InputSubmit = ({ titulo }) => {
   return (
     <>
@@ -18,13 +18,6 @@ export const InputSubmit = ({ titulo }) => {
     </>
   );
 };
-
-export const CampoFormulario = () => (
-  <Alert>
-    {" "}
-    <Alert>fdfdfdd</Alert>
-  </Alert>
-);
 
 export const ErrorFormulario = ({ error }) => {
   return (

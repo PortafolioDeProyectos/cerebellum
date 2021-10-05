@@ -6,6 +6,7 @@ import { css } from "@emotion/react";
 import Nav from "../layout/Nav";
 import Boton from "../ui/Boton";
 import Buscar from "../ui/Buscar";
+import { BotonChakra } from "../ui/ControlesChakra";
 import { FirebaseContext } from "../../firebase";
 const ContenedorHeader = styled.div`
   max-width: 1200px;
@@ -47,6 +48,7 @@ const Header = () => {
           <Link href="/">
             <Logo>Cerebellum</Logo>
           </Link>
+
           <Buscar />
           <Nav />
         </div>
@@ -78,12 +80,12 @@ const Header = () => {
           ) : (
             <>
               {" "}
-              <Link href="/login">
-                <Boton bgColor="true">Login</Boton>
-              </Link>
-              <Link href="/crear-cuenta">
-                <Boton>Crear cuenta</Boton>
-              </Link>{" "}
+              <BotonChakra titulo="Login" ruta="/login" colorbg="green.300" />
+              <BotonChakra
+                titulo="Crear cuenta"
+                ruta="/crear-cuenta"
+                colorbg="orange.300"
+              />
             </>
           )}
         </div>
