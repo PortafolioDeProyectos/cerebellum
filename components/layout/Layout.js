@@ -27,10 +27,10 @@ const Layout = (props) => {
             box-sizing: inherit;
           }
           body {
-            font-size: 1.6rem;
-            line-height: 1.5;
-            font-family: "PT Sans", sans-serif;
-            background-color: #f0f5fb;
+            // font-size: 1.6rem;
+            // line-height: 1.5;
+            //   font-family: "PT Sans", sans-serif;
+            //   background-color: #f0f5fb;
           }
           h1,
           h2 {

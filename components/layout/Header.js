@@ -8,6 +8,8 @@ import Boton from "../ui/Boton";
 import Buscar from "../ui/Buscar";
 import { BotonChakra } from "../ui/ControlesChakra";
 import { FirebaseContext } from "../../firebase";
+import { chakra } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 const ContenedorHeader = styled.div`
   max-width: 1200px;
   width: 95%;
@@ -31,13 +33,7 @@ const Logo = styled.p`
 const Header = () => {
   const { usuario, firebase } = useContext(FirebaseContext);
   return (
-    <header
-      css={css`
-        border-bottom: 2px solid #e1e1e1;
-        padding: 1rem 0;
-        background-color: #d8e8f8;
-      `}
-    >
+    <Box bgGradient="linear(to-r, blue.400, blue.200, blue.400)" py={4}>
       <ContenedorHeader>
         <div
           css={css`
@@ -61,36 +57,42 @@ const Header = () => {
           {usuario ? (
             <>
               {" "}
-              <p
-                css={css`
-                  margin-right: 1rem;
-                `}
-              >
-                Hola: {usuario.displayName}
-              </p>
-              <Boton
-                bgColor="true"
+              <Text fontSize="3xl">Hola: {usuario.displayName}</Text>
+              <chakra.a
+                px="3"
+                py="2"
+                bgColor="whatsapp.500"
+                width={60}
+                textAlign="center"
+                color="white"
+                ml={3}
+                rounded="md"
+                _hover={{ bg: "whatsapp.300" }}
+                cursor="pointer"
                 onClick={() => {
                   firebase.cerrarSesion(), Router.push("/");
                 }}
               >
                 Cerrar session
-              </Boton>
+              </chakra.a>
             </>
           ) : (
             <>
-              {" "}
-              <BotonChakra titulo="Login" ruta="/login" colorbg="green.300" />
               <BotonChakra
-                titulo="Crear cuenta"
-                ruta="/crear-cuenta"
-                colorbg="orange.300"
+                titulo={"Login"}
+                ruta={"/login"}
+                color={"orange.500"}
+              />
+              <BotonChakra
+                titulo={"Crear cuenta"}
+                ruta={"/crear-cuenta"}
+                color={"green.500"}
               />
             </>
           )}
         </div>
       </ContenedorHeader>
-    </header>
+    </Box>
   );
 };
 

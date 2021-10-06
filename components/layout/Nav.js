@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import { FirebaseContext } from "../../firebase";
+import { Stack, Box, chakra } from "@chakra-ui/react";
 
 const Navegacion = styled.nav`
   padding-left: 2rem;
@@ -19,9 +20,27 @@ const Navegacion = styled.nav`
 const Nav = () => {
   const { usuario } = useContext(FirebaseContext);
   return (
-    <div>
-      <Navegacion>
-        <Link href="/">Inicio</Link>
+    <Box>
+      <Stack
+        direction="row"
+        spacing={4}
+        marginLeft={6}
+        fontSize="2xl"
+        color="gray.600"
+        fontWeight="bold"
+      >
+        <Link href="/">
+          <chakra.a
+            cursor="pointer"
+            // _hover={{  }}
+            rounded={10}
+            padding={2}
+            textAlign="center"
+            alignItems="center"
+          >
+            Inicio
+          </chakra.a>
+        </Link>
 
         {usuario && (
           <>
@@ -29,8 +48,8 @@ const Nav = () => {
             <Link href="/populares">Populares</Link>
           </>
         )}
-      </Navegacion>
-    </div>
+      </Stack>
+    </Box>
   );
 };
 
