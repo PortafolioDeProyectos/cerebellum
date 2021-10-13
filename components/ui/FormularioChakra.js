@@ -5,11 +5,10 @@ export const InputSubmit = ({ titulo }) => {
     <>
       <Button
         type="submit"
-        bg="blue.500"
         width="100%"
         padding=" 1.5rem "
-        margin="20px 0"
-        color="white"
+        marginTop="30px"
+        colorScheme="blue"
         fontSize="1.2rem"
         _hover={{ bg: "blue.300" }}
       >

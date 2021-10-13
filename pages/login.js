@@ -7,7 +7,7 @@ import validarIniciarSesion from "../validacion/validarIniciarSesion";
 import firebase from "../firebase";
 //Validacion
 import useValidacion from "../hooks/useValidacion";
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Flex, Heading } from "@chakra-ui/react";
 import {
   InputSubmit,
   ErrorFormulario,
@@ -36,53 +36,55 @@ const Login = () => {
     <div>
       <Layout>
         <>
-          <h1
-            css={css`
-              text-align: center;
-              margin-top: 5rem;
-            `}
-          >
-            Iniciar sesion
-          </h1>
-          <Formulario onSubmit={handleSubmit} noValidate>
-            <FormControl id="email">
-              <FormLabel htmlFor="email">Email address</FormLabel>
-              <Input
-                size="lg"
-                mb="2"
-                type="email"
-                id="email"
-                placeholder="Tu email"
-                name="email"
-                value={email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </FormControl>
+          <Flex height="100vh" justifyContent="center">
+            <form onSubmit={handleSubmit} noValidate>
+              <Flex
+                direction="column"
+                // background="gray.200"
+                p={12}
+                rounded={6}
+                width="400px"
+                mt="150px"
+                bgGradient="linear(to-r, blue.400, blue.300)"
+              >
+                <Heading mb={6} color="white">
+                  Inicio de sesion
+                </Heading>
+                <Input
+                  size="lg"
+                  mb={3}
+                  type="email"
+                  id="email"
+                  placeholder="Tu email"
+                  name="email"
+                  value={email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  variant="filled"
+                />
+                {errores.email && <ErrorFormulario error={errores.email} />}
 
-            {errores.email && <ErrorFormulario error={errores.email} />}
+                <Input
+                  size="lg"
+                  mb="2"
+                  type="password"
+                  id="password"
+                  placeholder="Tu password"
+                  name="password"
+                  value={password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  variant="filled"
+                ></Input>
+                {errores.password && (
+                  <ErrorFormulario error={errores.password} />
+                )}
 
-            <FormControl>
-              <FormLabel htmlFor="password">Password</FormLabel>
-              <Input
-                size="lg"
-                mb="2"
-                type="password"
-                id="password"
-                placeholder="Tu password"
-                name="password"
-                value={password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              ></Input>
-            </FormControl>
-
-            {errores.password && <ErrorFormulario error={errores.password} />}
-
-            {error && <ErrorFormulario error={error} />}
-
-            <InputSubmit titulo="Iniciar sesion" />
-          </Formulario>
+                {error && <ErrorFormulario error={error} />}
+                <InputSubmit titulo="Iniciar sesion" />
+              </Flex>
+            </form>
+          </Flex>
         </>
       </Layout>
     </div>
