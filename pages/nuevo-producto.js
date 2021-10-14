@@ -3,12 +3,7 @@ import Router, { useRouter } from "next/router";
 import FileUploader from "react-firebase-file-uploader";
 import Layout from "../components/layout/Layout";
 import { css } from "@emotion/react";
-import {
-  Formulario,
-  Campo,
-  InputSubmit,
-  Error,
-} from "../components/ui/Formulario";
+
 import validarCrearProducto from "../validacion/validarCrearProducto";
 
 //Validacion
@@ -17,6 +12,21 @@ import useValidacion from "../hooks/useValidacion";
 import { FirebaseContext } from "../firebase";
 
 import Error404 from "../components/layout/404";
+//Chakra ui
+import {
+  ErrorFormulario,
+  InputSubmit,
+} from "../components/ui/FormularioChakra";
+import {
+  Flex,
+  Input,
+  Heading,
+  FormControl,
+  FormLabel,
+  Textarea,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react";
 
 const STATE_INICIAL = {
   nombre: "",
@@ -101,94 +111,105 @@ const NuevoProducto = () => {
           <Error404 />
         ) : (
           <>
-            <h1
-              css={css`
-                text-align: center;
-                margin-top: 2rem;
-              `}
-            >
-              Nuevo producto
-            </h1>
-            <Formulario onSubmit={handleSubmit} noValidate>
-              <fieldset>
-                <legend>Informacion General</legend>
+            <Flex height="100vh" justifyContent="center">
+              <form onSubmit={handleSubmit} noValidate>
+                <Flex
+                  direction="column"
+                  // background="gray.200"
+                  p={12}
+                  rounded={6}
+                  width="400px"
+                  mt="150px"
+                  bgGradient="linear(to-r, blue.400, blue.200)"
+                  border="1px"
+                  borderColor="blue.500"
+                >
+                  <Heading mb={6} color="white">
+                    Nuevo producto
+                  </Heading>
+                  <FormControl>
+                    <FormLabel>Nombre del producto</FormLabel>
+                    <Input
+                      size="lg"
+                      mb={3}
+                      variant="filled"
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      value={nombre}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </FormControl>
+                  {errores.nombre && <ErrorFormulario error={errores.nombre} />}
+                  <FormControl>
+                    <FormLabel>Nombre de la empresa</FormLabel>
+                    <Input
+                      size="lg"
+                      mb={3}
+                      variant="filled"
+                      type="text"
+                      id="empresa"
+                      name="empresa"
+                      value={empresa}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    ></Input>
+                  </FormControl>
+                  {errores.empresa && (
+                    <ErrorFormulario error={errores.empresa} />
+                  )}
+                  <FormControl>
+                    <FormLabel>Imagen</FormLabel>
+                    <FileUploader
+                      acept="image/*"
+                      id="imagen"
+                      name="imagen"
+                      randomizeFilename
+                      storageRef={firebase.storage.ref("productos")}
+                      onUploadStart={handleUploadStart}
+                      onUploadError={handleUploadError}
+                      onUploadSuccess={handleUploadSuccess}
+                      onProgress={handleProgress}
+                    ></FileUploader>
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel>URL</FormLabel>
+                    <Input
+                      size="lg"
+                      mb={3}
+                      variant="filled"
+                      type="url"
+                      id="url"
+                      name="url"
+                      value={url}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    ></Input>
+                  </FormControl>
+                  {errores.url && <ErrorFormulario error={errores.url} />}
 
-                <Campo>
-                  <label htmlFor="nombre">Nombre</label>
-                  <input
-                    type="text"
-                    id="nombre"
-                    placeholder="Nombre del producto"
-                    name="nombre"
-                    value={nombre}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  ></input>
-                </Campo>
-                {errores.nombre && <Error>{errores.nombre}</Error>}
-
-                <Campo>
-                  <label htmlFor="empresa">Empresa</label>
-                  <input
-                    type="text"
-                    id="empresa"
-                    placeholder="Nombre de la empresa"
-                    name="empresa"
-                    value={empresa}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  ></input>
-                </Campo>
-                {errores.empresa && <Error>{errores.empresa}</Error>}
-
-                <Campo>
-                  <label htmlFor="nombre">Imagen</label>
-                  <FileUploader
-                    acept="image/*"
-                    id="imagen"
-                    name="imagen"
-                    randomizeFilename
-                    storageRef={firebase.storage.ref("productos")}
-                    onUploadStart={handleUploadStart}
-                    onUploadError={handleUploadError}
-                    onUploadSuccess={handleUploadSuccess}
-                    onProgress={handleProgress}
-                  ></FileUploader>
-                </Campo>
-
-                <Campo>
-                  <label htmlFor="url">URL</label>
-                  <input
-                    type="url"
-                    id="url"
-                    name="url"
-                    value={url}
-                    placeholder="URL de tu producto"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  ></input>
-                </Campo>
-                {errores.url && <Error>{errores.url}</Error>}
-              </fieldset>
-
-              <fieldset>
-                <legend>Sobre tu producto</legend>
-                <Campo>
-                  <label htmlFor="descripcion">Descripcion</label>
-                  <textarea
+                  <FormControl>
+                    <FormLabel>Sobre tu producto</FormLabel>
+                  </FormControl>
+                  <Textarea
+                    size="lg"
+                    mb={3}
+                    variant="filled"
                     id="descripcion"
                     name="descripcion"
                     value={descripcion}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                  ></textarea>
-                </Campo>
-                {errores.descripcion && <Error>{errores.descripcion}</Error>}
-              </fieldset>
-
-              {error && <Error>{error}</Error>}
-              <InputSubmit type="submit" value="Crear producto" />
-            </Formulario>
+                  ></Textarea>
+                  {errores.descripcion && (
+                    <ErrorFormulario error={errores.descripcion} />
+                  )}
+                  {error && <ErrorFormulario error={error} />}
+                  <InputSubmit titulo="Agregar producto" />
+                </Flex>
+              </form>
+            </Flex>
           </>
         )}
       </Layout>

@@ -20,7 +20,7 @@ export const InputSubmit = ({ titulo }) => {
 
 export const ErrorFormulario = ({ error }) => {
   return (
-    <Alert status="error">
+    <Alert status="error" rounded={6} mb={3}>
       <AlertIcon />
       <AlertTitle mr={2}>{error}</AlertTitle>
     </Alert>
